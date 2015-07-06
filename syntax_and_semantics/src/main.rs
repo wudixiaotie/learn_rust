@@ -1,3 +1,4 @@
 fn main() {
-    println!("Hello, world!");
+    let a: bool = true;
+    println!("Hello, world!{}", a);
 }
