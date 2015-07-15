@@ -46,6 +46,16 @@ fn main() {
     match 7 {
         ref mut mr => println!("Got a mutable reference to {}", mr),
     }
+
+    let x5 = Point { x: 1, y: 2 };
+
+    match x5 {
+        Point { x: x, .. } => println!("x is {}", x),
+    }
+
+    match x5 {
+        Point { x: x, y: y } => println!("x is {}, y is {}", x, y),
+    }
 }
 #[derive(Debug)]
 struct Person {
@@ -55,4 +65,9 @@ struct Person {
 enum OptionalInt {
     Value(i32),
     Missing,
+}
+
+struct Point {
+    x: i32,
+    y: i32,
 }
