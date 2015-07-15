@@ -38,6 +38,14 @@ fn main() {
         OptionalInt::Value(_) => println!("Got an int!"),
         OptionalInt::Missing => println!("No such luck."),
     }
+
+    match 6 {
+        ref r => println!("Got a reference to {}", r),
+    }
+
+    match 7 {
+        ref mut mr => println!("Got a mutable reference to {}", mr),
+    }
 }
 #[derive(Debug)]
 struct Person {
