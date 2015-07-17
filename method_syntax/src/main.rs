@@ -23,6 +23,8 @@ fn main() {
     println!("area is {}", c4.area());
     println!("x: {}", c4.x);
     println!("y: {}", c4.y);
+
+    println!("self out x:{:p}", &CircleBuilder::new().x(2.0));
 }
 struct Circle {
     x: f64,
@@ -69,6 +71,7 @@ impl CircleBuilder {
 
     fn x(&mut self, coordinate: f64) -> &mut CircleBuilder {
         self.x = coordinate;
+        println!("self in x: {:p}", &self);
         self
     }
 
