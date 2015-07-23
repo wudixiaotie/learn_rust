@@ -1,8 +1,11 @@
 fn main() {
     let c = Circle { x: 2.3, y: 5.7, radius: 3.2 };
+    let c1 = Circle { x: 2.0, y: 9.1, radius: 5.4 };
+    let c2 = Circle { x: 2.1, y: 9.3, radius: 2.4 };
     let s = Square { x: -3.8, y: -2.4, side: 6.5 };
     print_area_position(c);
     print_area_position(s);
+    print_area_position2(c1, c2);
     print_area(4);
 }
 
@@ -12,9 +15,7 @@ trait HasArea {
 
 trait HasPosition {
     fn position(&self) -> (f64, f64);
-    fn position(&self) -> (f64, f64) {
-        (self.f64, self.f64)
-    }
+    fn baz(&self) { println!("We called baz.{:?}"); }
 }
 
 struct Circle {
@@ -59,12 +60,13 @@ fn print_area<T: HasArea>(sharp: T) {
 
 fn print_area_position<T: HasArea + HasPosition>(sharp: T) {
     println!("This sharp has an area of {} and position is {:?}", sharp.area(), sharp.position());
+    sharp.baz();
 }
 
 fn print_area_position2<T, K>(sharp: T, a: K)
     where T: HasArea + HasPosition,
           K: HasArea {
-    println!("This sharp has an area of {} and position is {:?}", sharp.area(), sharp.position());
+    println!("This sharp has an area of {} and position is {:?}, a is {:?}", sharp.area(), sharp.position(), a.area());
 }
 
 impl HasArea for i32 {
